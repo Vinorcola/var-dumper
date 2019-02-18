@@ -49,7 +49,7 @@ class ServerDumpCommand extends Command
             'html' => new HtmlDescriptor(new HtmlDumper()),
         ];
 
-        parent::__construct();
+        parent::__construct(self::$defaultName);
     }
 
     protected function configure()
@@ -77,7 +77,7 @@ EOF
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $io = new SymfonyStyle($input, $output);
+        $io = new UpdatedSymfonyStyle($input, $output);
         $format = $input->getOption('format');
 
         if (!$descriptor = $this->descriptors[$format] ?? null) {
