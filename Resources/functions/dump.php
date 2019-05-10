@@ -11,6 +11,14 @@
 
 use Symfony\Component\VarDumper\VarDumper;
 
+if (!function_exists('spl_object_id')) {
+
+    function spl_object_id($object) {
+
+        return \Symfony\Component\VarDumper\Php72::spl_object_id($object);
+    }
+}
+
 if (!function_exists('dump')) {
     /**
      * @author Nicolas Grekas <p@tchwork.com>
